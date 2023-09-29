@@ -33,7 +33,7 @@ public class Market : IMarketBehaviour, IQueueBehaviour
         
         foreach (var human in _marketVisitors.Where(h=> h.IsMakeOrder() == false & !_queue.Contains(h)))
         {
-            if (_random.Next(1, 3) == 3)
+            if (_random.Next(1, 3) == 2)
             {
                 Console.WriteLine($"{human.Name} еще смотрит и не встал в очередь");
             }
@@ -48,9 +48,9 @@ public class Market : IMarketBehaviour, IQueueBehaviour
         var leavers = new List<Actor>();
         foreach (var human in _marketVisitors.Where(h => h.IsTakeOrder() && !_queue.Contains(h)))
         {
-            if (_random.Next(1, 4) > 3)
+            if (_random.Next(1, 4) == 3)
             {
-                Console.WriteLine($"{human.Name}Забрал заказ, но еще что-то смотрит");
+                Console.WriteLine($"{human.Name} забрал заказ, но еще что-то смотрит");
             }
             else
             {
@@ -86,4 +86,5 @@ public class Market : IMarketBehaviour, IQueueBehaviour
         Console.WriteLine($"{human.Name} вышел из очереди");
     }
 
+    public int Count => _marketVisitors.Count;
 }

@@ -7,7 +7,8 @@ for (var i = 0; i < 5; i++)
     market.AcceptToMarket(new Human(Faker.Name.First()));
 }
 
-for (var i = 0; i < 50; i++)
+while (market.Count > 0)
 {
+    Console.WriteLine("=================================================");
     market.Update();
 }

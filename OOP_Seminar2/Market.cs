@@ -46,7 +46,7 @@ public class Market : IMarketBehaviour, IQueueBehaviour
         
         
         var leavers = new List<Actor>();
-        foreach (var human in _marketVisitors.Where(h => h.IsTakeOrder()))
+        foreach (var human in _marketVisitors.Where(h => h.IsTakeOrder() && !_queue.Contains(h)))
         {
             if (_random.Next(1, 4) > 3)
             {
